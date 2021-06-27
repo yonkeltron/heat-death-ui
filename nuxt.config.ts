@@ -32,6 +32,8 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/composition-api/module',
+    ['@nuxtjs/eslint-module', { fix: true }],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -57,4 +59,4 @@ export default {
   server: {
     host: '0.0.0.0',
   },
-}
+};
