@@ -14,6 +14,7 @@ export default defineComponent({
     const card: Card = {
       kind: 'Unit',
       image: 'units_00.png',
+      name: 'Merchant',
     };
     const { route } = useContext();
     const id = computed(() => route.value.params.id);
