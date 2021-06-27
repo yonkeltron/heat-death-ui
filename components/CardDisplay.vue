@@ -6,12 +6,12 @@
 
 <script lang="ts">
 import { defineComponent, PropType, computed } from '@nuxtjs/composition-api';
-import { Card, imagePathFor } from '~/lib/card';
+import { Card, CardKind, imagePathFor } from '~/lib/card';
 
 export default defineComponent({
   name: 'CardDisplay',
   props: {
-    card: { type: Object as PropType<Card>, required: true },
+    card: { type: Object as PropType<Card<CardKind>>, required: true },
   },
   setup(props) {
     const imagePath = computed(() => imagePathFor(props.card));
