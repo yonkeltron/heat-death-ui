@@ -1,6 +1,11 @@
 <template>
   <div :title="cardName">
-    <img class="shadow-lg" width="150" :src="imagePath" :alt="cardKind" />
+    <img
+      class="shadow-md hover:shadow-2xl"
+      width="150"
+      :src="imagePath"
+      :alt="cardKind"
+    />
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <main class="m-5">
-    <h2>Heat Death: Game {{ gameState.id }}</h2>
+    <h2 class="text-2xl">Heat Death: Game {{ gameState.id }}</h2>
     <ul>
       <li>
         <strong>Between:</strong>
