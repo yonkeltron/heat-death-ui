@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img width="200" :src="imagePath" :alt="cardKind" />
+    <img width="150" :src="imagePath" :alt="cardKind" />
   </div>
 </template>
 

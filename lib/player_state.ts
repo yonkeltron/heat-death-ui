@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { Card, CrystalKind, MainKind, bases, units } from './card';
 interface IPlayerState {
   name: string;
@@ -11,15 +12,18 @@ interface IPlayerState {
 export type PlayerState = Readonly<IPlayerState>;
 
 const merchants = (n: number): Card<MainKind>[] => {
-  return units.filter((unit) => unit.Name === 'Merchant').slice(0, n);
+  const element = units.filter((unit) => unit.Name === 'Merchant')[0];
+  return Array.from({ length: n }, (_i) => Object.create(element));
 };
 
 const starshipTroopers = (n: number): Card<MainKind>[] => {
-  return units.filter((unit) => unit.Name === 'Starship Trooper').slice(0, n);
+  const element = units.filter((unit) => unit.Name === 'Starship Trooper')[0];
+  return Array.from({ length: n }, (_i) => Object.create(element));
 };
 
 const neutralBases = (n: number): Card<MainKind>[] => {
-  return bases.filter((base) => base.Faction === 'Neutral').slice(0, n);
+  const element = bases.filter((base) => base.Faction === 'Neutral')[0];
+  return Array.from({ length: n }, (_i) => Object.create(element));
 };
 
 export const newPlayerState = (playerName: string): PlayerState => {
@@ -31,7 +35,7 @@ export const newPlayerState = (playerName: string): PlayerState => {
 
   return {
     name: playerName,
-    drawableCards: playerDeck,
+    drawableCards: _.shuffle(playerDeck),
     discardedCards: [],
     intactCrystalCards: [],
     crackedCrystalCards: [],

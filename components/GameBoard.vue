@@ -12,13 +12,34 @@
         {{ gameState.mainDeck.length }}
       </li>
     </ul>
-    <h3>Market</h3>
-    <section class="market grid grid-cols-5">
-      <card-display
-        v-for="card in gameState.cardMarket"
-        :key="card.Image"
-        :card="card"
-      />
+
+    <section class="market w-1/2 my-5">
+      <h3 class="block">Market</h3>
+
+      <div class="grid grid-cols-5">
+        <card-display
+          v-for="card in gameState.cardMarket"
+          :key="card.Image"
+          :card="card"
+        />
+      </div>
+    </section>
+
+    <section
+      v-for="(playerData, playerName) in gameState.players"
+      :key="playerData.name"
+    >
+      <h4 class="block">
+        Player: {{ playerName }} &mdash;&gt; {{ playerData.health }}
+      </h4>
+
+      <div class="grid grid-cols-5">
+        <card-display
+          v-for="card in playerData.drawableCards"
+          :key="card.Image"
+          :card="card"
+        />
+      </div>
     </section>
   </main>
 </template>

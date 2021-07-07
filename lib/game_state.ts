@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+import _ from 'lodash';
 import { Card, MainKind, units, bases } from './card';
 import { PlayerState, newPlayerState } from './player_state';
 
@@ -41,7 +41,7 @@ export const newGameState = (id: string, playerNames: string[]): GameState => {
 const assembleMainDeck = (): Card<MainKind>[] => {
   const unshuffled: Card<MainKind>[] = _.uniqBy(
     [bases, units].flat(),
-    (card) => card.Icon
+    (card) => card.Image
   )
     .filter((card) => card.Faction !== 'Neutral')
     .map((card) => {
