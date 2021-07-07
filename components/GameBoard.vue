@@ -1,5 +1,12 @@
 <template>
-  <main class="m-5">
+  <main class="m-5 font-mono">
+    <h2 class="float-right">
+      <button
+        class="rounded p-2 ring-4 ring-black hover:bg-black hover:text-white"
+      >
+        End Turn
+      </button>
+    </h2>
     <h2 class="text-2xl">Heat Death: Game {{ gameState.id }}</h2>
     <ul>
       <li>
