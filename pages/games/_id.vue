@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="m-2" @click="newGame()">NEW GAME</button>
-    <game-board :game-state="gameState" />
+    <game-board v-if="gameState" :game-state="gameState" />
   </div>
 </template>
 
@@ -12,15 +12,16 @@ import {
   useContext,
   useStore,
 } from '@nuxtjs/composition-api';
-import { RootState } from '~/store/game';
+import { GameState } from '~/lib/game_state';
+// import { RootState } from '~/store/game';
 
 export default defineComponent({
   setup() {
     const { route } = useContext();
-    const store = useStore<RootState>();
-    const newGame = () => {
+    const store = useStore();
+    const newGame = async () => {
       const id = computed(() => route.value.params.id);
-      store.dispatch('game/initialize', {
+      await store.dispatch('game/initialize', {
         id: id.value,
         players: ['panda', 'bamboo'],
       });
@@ -28,7 +29,9 @@ export default defineComponent({
 
     newGame();
 
-    const gameState = computed(() => store.state.currentGameState);
+    const gameState = computed(
+      (): GameState => store.getters['game/currentGameState']
+    );
 
     return { gameState, newGame };
   },
