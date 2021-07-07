@@ -1,18 +1,19 @@
 <template>
   <div>
-    <h2>Game: {{ id }}</h2>
+    <game-board :game-state="gameState" />
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, useContext } from '@nuxtjs/composition-api';
-// import { units } from '~/lib/card';
+import { newGameState } from '~/lib/game_state';
 
 export default defineComponent({
   setup() {
     const { route } = useContext();
     const id = computed(() => route.value.params.id);
-    return { id };
+    const gameState = newGameState(id.value, ['panda', 'bamboo']);
+    return { gameState };
   },
 });
 </script>

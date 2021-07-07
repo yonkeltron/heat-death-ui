@@ -26,7 +26,7 @@ export const newGameState = (id: string, playerNames: string[]): GameState => {
     mainDeck.pop(),
     mainDeck.shift(),
     mainDeck.pop(),
-  ];
+  ].filter((card) => card) as Card<MainKind>[];
 
   return {
     id,
@@ -38,14 +38,17 @@ export const newGameState = (id: string, playerNames: string[]): GameState => {
   };
 };
 
-const assembleMainDeck = () => {
-  const unshuffled = [bases, units]
-    .flat()
+const assembleMainDeck = (): Card<MainKind>[] => {
+  const unshuffled: Card<MainKind>[] = _.uniqBy(
+    [bases, units].flat(),
+    (card) => card.Icon
+  )
     .filter((card) => card.Faction !== 'Neutral')
     .map((card) => {
       const newCard = Object.create(card);
 
       return newCard;
     });
+
   return _.shuffle(unshuffled);
 };

@@ -1,6 +1,9 @@
 <template>
   <main class="m-5">
-    <h2>Heat Death: {{ gameState.id }}</h2>
+    <h2>
+      Heat Death: Game {{ gameState.id }} between
+      {{ Object.keys(gameState.players).join(' and ') }}
+    </h2>
     <ul>
       <li><strong>Turn:</strong> {{ gameState.turn }}</li>
       <li></li>
@@ -12,8 +15,8 @@
     <h3>Market</h3>
     <section class="market grid grid-cols-5">
       <card-display
-        v-for="card in gameState.market"
-        :key="card.image"
+        v-for="card in gameState.cardMarket"
+        :key="card.Image"
         :card="card"
       />
     </section>

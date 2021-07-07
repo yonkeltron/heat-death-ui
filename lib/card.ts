@@ -38,7 +38,7 @@ export const imageFor = (card: Card<CardKind>, index: number): string => {
   return output;
 };
 
-export const bases: Card<MainKind>[] = rawBases.map(
+export const bases: Readonly<Card<MainKind>[]> = rawBases.map(
   (rawBase: any, index: number) => {
     rawBase.Image = imageFor(rawBase, index);
 
@@ -46,7 +46,7 @@ export const bases: Card<MainKind>[] = rawBases.map(
   }
 );
 
-export const units: Card<MainKind>[] = rawUnits.map(
+export const units: Readonly<Card<MainKind>[]> = rawUnits.map(
   (rawUnit: any, index: number) => {
     rawUnit.Image = imageFor(rawUnit, index);
 
