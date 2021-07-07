@@ -15,7 +15,7 @@ export default defineComponent({
   },
   setup(props) {
     const imagePath = computed(() => imagePathFor(props.card));
-    const cardKind = computed(() => props.card.kind);
+    const cardKind = computed(() => props.card.Kind);
     return { cardKind, imagePath };
   },
 });
