@@ -13,7 +13,6 @@ import {
   useStore,
 } from '@nuxtjs/composition-api';
 import { GameState } from '~/lib/game_state';
-// import { RootState } from '~/store/game';
 
 export default defineComponent({
   setup() {

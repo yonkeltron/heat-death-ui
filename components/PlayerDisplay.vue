@@ -1,5 +1,5 @@
 <template>
-  <section class="flex">
+  <section class="my-3 flex">
     <div class="flex-auto">
       <h4 class="block text-xl">
         Player <strong>{{ playerState.name }}</strong>
