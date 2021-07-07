@@ -38,12 +38,12 @@ export const imageFor = (card: Card<CardKind>, index: number): string => {
     output = `crystals_${displayIndex}.png`;
   }
 
-  return output;
+  return `/cards/${output}`;
 };
 
 export const bases: Readonly<Card<MainKind>[]> = rawBases.map(
   (rawBase: any, index: number) => {
-    rawBase.Image = imagePathFor(rawBase, index);
+    rawBase.Image = imageFor(rawBase, index);
     rawBase.Id = uuidv4();
 
     return rawBase;
@@ -52,7 +52,7 @@ export const bases: Readonly<Card<MainKind>[]> = rawBases.map(
 
 export const units: Readonly<Card<MainKind>[]> = rawUnits.map(
   (rawUnit: any, index: number) => {
-    rawUnit.Image = imagePathFor(rawUnit, index);
+    rawUnit.Image = imageFor(rawUnit, index);
     rawUnit.Id = uuidv4();
 
     return rawUnit;
