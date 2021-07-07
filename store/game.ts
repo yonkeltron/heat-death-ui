@@ -1,22 +1,23 @@
+import _ from 'lodash';
 import { ActionTree, GetterTree, MutationTree } from 'vuex';
 import { GameState, newGameState } from '~/lib/game_state';
 import { GameTurn, newGameTurn } from '~/lib/game_turn';
 
 export const state = () => ({
-  currentGameState: {} as GameState,
+  gameStates: [] as GameState[],
   currentTurn: {} as GameTurn,
 });
 
 export type RootState = ReturnType<typeof state>;
 
 export const getters: GetterTree<RootState, RootState> = {
-  currentGameState: (state) => state.currentGameState,
+  currentGameState: (state) => _.last(state.gameStates),
   currentTurn: (state) => state.currentTurn,
 };
 
 export const mutations: MutationTree<RootState> = {
   INITIALIZE: (state, firstGameState: GameState) => {
-    state.currentGameState = firstGameState;
+    state.gameStates.push(firstGameState);
     state.currentTurn = newGameTurn(firstGameState, '');
   },
   UPDATE_CURRENT_TURN: (state, newTurn: GameTurn) =>
