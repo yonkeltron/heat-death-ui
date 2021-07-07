@@ -1,6 +1,6 @@
 <template>
   <div :title="cardName">
-    <img width="150" :src="imagePath" :alt="cardKind" />
+    <img class="shadow-lg" width="150" :src="imagePath" :alt="cardKind" />
   </div>
 </template>
 

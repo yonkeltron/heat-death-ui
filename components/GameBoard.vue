@@ -13,34 +13,13 @@
       </li>
     </ul>
 
-    <section class="market w-1/2 my-5">
-      <h3 class="block">Market</h3>
+    <market-display :game-state="gameState" />
 
-      <div class="grid grid-cols-5">
-        <card-display
-          v-for="card in gameState.cardMarket"
-          :key="card.Id"
-          :card="card"
-        />
-      </div>
-    </section>
-
-    <section
-      v-for="(playerData, playerName) in gameState.players"
-      :key="playerData.name"
-    >
-      <h4 class="block">
-        Player: {{ playerName }} &mdash;&gt; {{ playerData.health }}
-      </h4>
-
-      <div class="grid grid-cols-5">
-        <card-display
-          v-for="card in playerData.drawableCards"
-          :key="card.Id"
-          :card="card"
-        />
-      </div>
-    </section>
+    <player-display
+      v-for="playerState in gameState.players"
+      :key="playerState.name"
+      :player-state="playerState"
+    />
   </main>
 </template>
 
