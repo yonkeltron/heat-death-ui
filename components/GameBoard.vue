@@ -1,16 +1,12 @@
 <template>
   <main class="m-5">
-    <h2>
-      Heat Death: Game {{ gameState.id }} between
-      {{ Object.keys(gameState.players).join(' and ') }}
-    </h2>
+    <h2>Heat Death: Game {{ gameState.id }}</h2>
     <ul>
-      <li><strong>Turn:</strong> {{ gameState.turn }}</li>
-      <li></li>
       <li>
-        <strong>Remaining Cards in Main Deck:</strong>
-        {{ gameState.mainDeck.length }}
+        <strong>Between:</strong>
+        {{ Object.keys(gameState.players).join(' and ') }}
       </li>
+      <li><strong>Turn:</strong> {{ gameState.turn }}</li>
     </ul>
 
     <market-display :game-state="gameState" />

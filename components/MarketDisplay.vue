@@ -1,6 +1,8 @@
 <template>
   <section class="market w-3/4 my-5">
-    <h3 class="block">Market</h3>
+    <h3 class="block text-xl mb-2">
+      Market (+{{ gameState.mainDeck.length }})
+    </h3>
 
     <div class="grid grid-cols-5">
       <card-display
