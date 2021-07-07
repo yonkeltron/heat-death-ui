@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Card, CrystalKind, MainKind, bases, units } from './card';
+import { Card, CrystalKind, MainKind, bases, cloneCard, units } from './card';
 interface IPlayerState {
   name: string;
   drawableCards: Card<MainKind>[];
@@ -13,17 +13,17 @@ export type PlayerState = Readonly<IPlayerState>;
 
 const merchants = (n: number): Card<MainKind>[] => {
   const element = units.filter((unit) => unit.Name === 'Merchant')[0];
-  return Array.from({ length: n }, (_i) => Object.create(element));
+  return Array.from({ length: n }, (_i) => cloneCard(element));
 };
 
 const starshipTroopers = (n: number): Card<MainKind>[] => {
   const element = units.filter((unit) => unit.Name === 'Starship Trooper')[0];
-  return Array.from({ length: n }, (_i) => Object.create(element));
+  return Array.from({ length: n }, (_i) => cloneCard(element));
 };
 
 const neutralBases = (n: number): Card<MainKind>[] => {
   const element = bases.filter((base) => base.Faction === 'Neutral')[0];
-  return Array.from({ length: n }, (_i) => Object.create(element));
+  return Array.from({ length: n }, (_i) => cloneCard(element));
 };
 
 export const newPlayerState = (playerName: string): PlayerState => {

@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div :title="cardName">
     <img width="150" :src="imagePath" :alt="cardKind" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType, computed } from '@nuxtjs/composition-api';
-import { Card, CardKind, imagePathFor } from '~/lib/card';
+import { Card, CardKind } from '~/lib/card';
 
 export default defineComponent({
   name: 'CardDisplay',
@@ -14,9 +14,10 @@ export default defineComponent({
     card: { type: Object as PropType<Card<CardKind>>, required: true },
   },
   setup(props) {
-    const imagePath = computed(() => imagePathFor(props.card));
+    const imagePath = computed(() => props.card.Image);
     const cardKind = computed(() => props.card.Kind);
-    return { cardKind, imagePath };
+    const cardName = computed(() => props.card.Name);
+    return { cardKind, cardName, imagePath };
   },
 });
 </script>

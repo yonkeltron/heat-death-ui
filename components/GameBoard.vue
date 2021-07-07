@@ -19,7 +19,7 @@
       <div class="grid grid-cols-5">
         <card-display
           v-for="card in gameState.cardMarket"
-          :key="card.Image"
+          :key="card.Id"
           :card="card"
         />
       </div>
@@ -36,7 +36,7 @@
       <div class="grid grid-cols-5">
         <card-display
           v-for="card in playerData.drawableCards"
-          :key="card.Image"
+          :key="card.Id"
           :card="card"
         />
       </div>

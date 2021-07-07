@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import rawBases from '~/content/bases.json';
 import rawUnits from '~/content/units.json';
 
@@ -12,6 +14,7 @@ export interface Card<K extends CardKind> {
   Cost: number;
   Faction: string;
   Icon: string;
+  Id: string;
   Kind: K;
   Name: string;
   Quantity: number;
@@ -40,7 +43,8 @@ export const imageFor = (card: Card<CardKind>, index: number): string => {
 
 export const bases: Readonly<Card<MainKind>[]> = rawBases.map(
   (rawBase: any, index: number) => {
-    rawBase.Image = imageFor(rawBase, index);
+    rawBase.Image = imagePathFor(rawBase, index);
+    rawBase.Id = uuidv4();
 
     return rawBase;
   }
@@ -48,8 +52,16 @@ export const bases: Readonly<Card<MainKind>[]> = rawBases.map(
 
 export const units: Readonly<Card<MainKind>[]> = rawUnits.map(
   (rawUnit: any, index: number) => {
-    rawUnit.Image = imageFor(rawUnit, index);
+    rawUnit.Image = imagePathFor(rawUnit, index);
+    rawUnit.Id = uuidv4();
 
     return rawUnit;
   }
 );
+
+export const cloneCard = <T extends MainKind>(card: Card<T>): Card<T> => {
+  const newCard = Object.create(card);
+  newCard.Id = uuidv4();
+
+  return newCard;
+};
